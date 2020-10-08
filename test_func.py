@@ -5,6 +5,8 @@ import torch.nn as nn
 from model_unet import UNet
 import os
 import cv2
+from torch.utils.data.dataloader import DataLoader
+from dataset import Dataset
 
 
 def my32channels2rgb(img):
@@ -54,7 +56,7 @@ saved_model_path = '/content/drive/My Drive/unet_adam.pth'
 device = 'cpu'
 model_unet = UNet().to(device)
 
-model_unet.load_state_dict(torch.load(saved_model_path))
+# model_unet.load_state_dict(torch.load(saved_model_path))
 image_dataset = Dataset(dir_inp, dir_inp)
 
 data_loader = DataLoader(image_dataset, batch_size=1, shuffle=True)

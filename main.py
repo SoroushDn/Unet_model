@@ -13,11 +13,14 @@ from model_unet import UNet
 from torch.utils.data.dataloader import DataLoader
 from dataset import Dataset
 
-dir_inp = '/content/camvid-master/701_StillsRaw_full/'
-dir_lbl = '/content/camvid-master/LabeledApproved_full/'
 
-image_dataset = Dataset(dir_inp, dir_inp)
-saved_model_path = '/content/drive/My Drive/unet_adam.pth'
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
+dir_inp = '/home/soroush/codes/test/camvid-master/701_StillsRaw_full/'
+dir_lbl = '/home/soroush/codes/test/camvid-master/LabeledApproved_full/'
+
+image_dataset = Dataset(dir_inp, dir_lbl)
+saved_model_path = '/home/soroush/codes/test/unet_adam.pth'
 data_loader = DataLoader(image_dataset, batch_size=80, shuffle=True)
 
 

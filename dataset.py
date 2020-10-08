@@ -9,8 +9,8 @@ import scipy.io
 import random
 from zipfile import ZipFile
 
-with ZipFile('/content/drive/My Drive/camvid-master.zip', 'r') as zip_file:
-    zip_file.extractall()
+# with ZipFile('/content/drive/My Drive/camvid-master.zip', 'r') as zip_file:
+#     zip_file.extractall()
 
 def conveter_32channels(img):
     matColered = np.array([[64, 192, 0, 0, 128, 64, 64, 192, 192, 64, 128, 192, 128, 192, 128, 64, 64, 128, 128, 0, 192,
@@ -63,7 +63,8 @@ class Dataset(Dataset):
         for j in range(3):
             images[:, :, j] = images[:, :, j] / np.max(images[:, :, j])
         # print(np.max(lbl_img[i]))
-        img_input = torch.from_numpy(np.array([[images[:, :, 0], images[:, :, 1], images[:, :, 2]]]))
+        print(np.shape(images))
+        img_input = torch.from_numpy(np.array([images[:, :, 0], images[:, :, 1], images[:, :, 2]]))
 
         lbl_img_tmp = cv2.imread(self.dataset_lbl_dir + self.labels[idx] + '_L.png')
         lbl_img_tmp = cv2.cvtColor(lbl_img_tmp, cv2.COLOR_BGR2RGB)

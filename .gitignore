@@ -148,7 +148,7 @@ dmypy.json
 .idea/
 .venv/
 .runs/
-
+camvid-master/
 
 *.pth
 config.json
